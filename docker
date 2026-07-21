@@ -1,0 +1,6 @@
+##1.Why Docker##
+Docker is used because it solves the "it works on my machine" problem by packaging an application and all its dependencies into a standardized, isolated container
+
+##2.Container ##
+
+A Docker container is a lightweight, standalone, and executable package of software that includes everything needed to run an application, including the code, runtime, system tools, libraries, and settings. 
