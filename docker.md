@@ -119,4 +119,50 @@ Description:
 If we want to allow users to access our application: we have to share the host ip and host port
 If uses access container ip and port will not access to outside of users, since it will only access within host network.
 
+#Volumes
+CMD: docker run -v /opt/datadir:/var/lib/mysql mysql
+Description: starts a MySQL container and uses a Docker bind mount to store MySQL data outside the container.
+ 
+HOST MACHINE                 MYSQL CONTAINER
+ 
+/opt/datadir    ←────────→  /var/lib/mysql
+                               ↓
+                         MySQL database files
 
+
+Why do we use this?
+The main reason is data persistence
+Without a mount:
+MySQL Container
+     ↓
+MySQL Data
+     ↓
+Container deleted
+     ↓
+Data may be lost ❌
+ 
+ 
+Ex2:
+CMD: docker run --mount type=bind,source=/opt/datadir,target=/var/lib/mysql mysql
+Description:
+starts a MySQL container and bind-mounts a directory from your host machine into the container.
+It is essential
+ 
+--mount vs -v
+ 
+These two commands have a similar purpose:
+docker run -v /opt/datadir:/var/lib/mysql mysql
+And
+docker run --mount type=bind,source=/opt/datadir,target=/var/lib/mysql mysql
+The second is simply more explicit and readable:
+-v syntax:
+HOST_PATH:CONTAINER_PATH
+ 
+--mount syntax:
+type=bind,
+source=HOST_PATH,
+target=CONTAINER_PATH
+For scripts and production configurations, --mount can be easier to understand because type, source, and target are clearly specified.
+ 
+#How to check container logs after running container in detach mode
+CMD: docker logs container-name or id                         
