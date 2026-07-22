@@ -45,8 +45,9 @@ output:it will show container name then it is successfully removed
 Cmd: docker images
 Note :we will get name id tag size created date here
 
+
 #Remove docker image
-CMD: docker rmi image-name
+CMD: docker rmi image-name(we can't delete it with image id)
 Note: make sure no containers are running on that image before you remove image
 
 docker pull command downloads container images from a registry (like Docker Hub) to your local machine. 
@@ -68,6 +69,10 @@ CMD: docker exec container-id cat /etc/hosts
  
 #Run a container on Detach mode(it will run on background, directly gives the id .and stops automatocally.so you can able to perform other actions)
 CMD: docker run -d container-name or ID
+
+note:if you want to give name to container then run:
+CMD: docker run -d --name divya container-name or ID
+
  
 ##Run a container on Detach mode(here it won't stop we need to press contrl+c to get out of it or quit)
 CMD: docker run container-id
@@ -75,3 +80,43 @@ CMD: docker run container-id
 #if you want to attach back to running container
 CMD: docker attach container-id
 note Lcontainer id is big number like:asdfghjkrtyu so just give asdfg so it will understand because it is unique
+
+The docker inspect command returns low-level, detailed configuration data for virtually any Docker object—such as containers, images, volumes, and networks—in a structured JSON format.
+docker inspect <container_name_or_id>
+
+**Image tags**
+one image can be used by different cointainers
+
+1.docker rum redis
+output :it will give latest version
+if you want to go with specific version
+cmd docker run redis:7.4
+
+2.now you have 2 images of redis with different version so u want to delete one specific version
+cmd:docker rmi redis:7.4
+
+**interactive mode**
+
+#Docker container runs in a  non-interactive mode. You can give input while running, so you must provide before running.
+Ex:docker run image-name(non-interactive)
+Output: Hello and Welcome!
+ 
+Ex: docker run -i image-name(interactive)
+Naga(just we give name)
+Output: Hello and Welcome Naga!
+ 
+Ex: docker run -it Image-name(interactive and terminal)
+Welcome! Please enter your name: Naga
+Output: Hello and Welcome Naga!
+
+#Port mapping
+CMD: docker run -d -p 80:5000 image-name
+Note:we can use 81:5001.82:5000
+but we can't do 80:5001
+Description:
+80 -> host port or machine port
+5000 -> container port
+If we want to allow users to access our application: we have to share the host ip and host port
+If uses access container ip and port will not access to outside of users, since it will only access within host network.
+
+
