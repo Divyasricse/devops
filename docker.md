@@ -197,3 +197,9 @@ Build a new smaller docker image by modifying the same Dockerfile and name it we
 cmd:docker build -t container_name:lite .
 
 
+**entrypoint vs cmd in dockerfile**
+
+CMD defines default commands or arguments that are easily completely overridden at runtime, while ENTRYPOINT sets a fixed main executable that
+cannot be directly overridden by standard CLI arguments. Instead, any arguments passed at runtime are appended to the ENTRYPOINT
+
+
