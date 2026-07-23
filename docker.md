@@ -202,4 +202,5 @@ cmd:docker build -t container_name:lite .
 CMD defines default commands or arguments that are easily completely overridden at runtime, while ENTRYPOINT sets a fixed main executable that
 cannot be directly overridden by standard CLI arguments. Instead, any arguments passed at runtime are appended to the ENTRYPOINT
 
+<img width="780" height="796" alt="image" src="https://github.com/user-attachments/assets/301ff2e7-3170-47ac-bde9-400740e27a42" />
 
