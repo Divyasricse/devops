@@ -160,9 +160,40 @@ HOST_PATH:CONTAINER_PATH
  
 --mount syntax:
 type=bind,
+
 source=HOST_PATH,
 target=CONTAINER_PATH
 For scripts and production configurations, --mount can be easier to understand because type, source, and target are clearly specified.
  
 #How to check container logs after running container in detach mode
-CMD: docker logs container-name or id                         
+CMD: docker logs container-name or id  
+
+
+**Docker File**
+what docker file contain
+A Dockerfile is a plain text file containing a set of instructions used to build a Docker image.
+Each instruction defines a step in creating the image, such as selecting a base image ( FROM ), copying files ( COPY ), installing packages ( RUN ), or setting environment variables (ENV).
+
+#Problems with docker builds
+Packages re-download every build (for image creation even change only for single line)
+Secrets leak into image metadata - docker build --build API_KEY=mysecretkey -t myapp .
+Architecture lock-in (windows build(runs amd64a) vs Mac build(arm64)) both can't run on each other
+Independent stages run sequentially
+
+Buildkit fixes all above problems using buildx
+ 
+#How to create docker file from scratch
+CMD: docker init -> will ask few details
+
+use it:
+new project from scratch
+skip it:when you have docker file already in use
+
+if you want to build the docker image 
+
+docker build -t container_name .
+
+Build a new smaller docker image by modifying the same Dockerfile and name it webapp-color and tag it lite.
+cmd:docker build -t container_name:lite .
+
+
