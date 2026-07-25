@@ -247,3 +247,6 @@ Image: "redis:alpine"
 links:-Database
 Orchestration:
 Image: "ansible"
+
+if u r linking one to other use
+cmd:docker run -d --name=web --network database web
