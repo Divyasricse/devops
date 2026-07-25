@@ -222,4 +222,10 @@ cannot be directly overridden by standard CLI arguments. Instead, any arguments 
 
 
 difference between docker hub and github
-GitHub is a code hosting platform used for storing source code and tracking revisions, whereas Docker Hub is a container registry used for storing, sharing, and managing compiled Docker container images
+GitHub is a code hosting platform used for storing source code and tracking revisions, whereas Docker Hub is a container registry used for storing, sharing, and managing compiled Docker 
+container images
+
+To check the status of docker wheather it is running or not
+cmd:sudo systemctl status docker
+output:active
+
