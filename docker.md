@@ -5,8 +5,11 @@ vm solve some problems of pysical server(modern things done by devops),conatiner
 u can create containes on top of vm  as well as pysical server
 
 why docker containers are lightweight?
-Docker containers are lightweight because they share the host operating system's
-kernel instead of hardware-virtualizing a full guest operating system
+Docker containers are lightweight because they didn't have a full operating system and they use the resources from base  operating system
+or 
+they share the host operating system's kernel instead of hardware-virtualizing a full guest operating system
+<img width="1589" height="830" alt="image" src="https://github.com/user-attachments/assets/c067271d-5b56-40d8-963a-0ab76506256c" />
+ docker file (we will give some commands) from these it will bulid image ,by using image it will run conatainer.these all commands is handles by docker engine
 
 <img width="617" height="354" alt="image" src="https://github.com/user-attachments/assets/fd1c0ed7-1371-4a6b-b1d6-9a2d76fbc0ce" />
 
