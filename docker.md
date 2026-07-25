@@ -220,3 +220,6 @@ cannot be directly overridden by standard CLI arguments. Instead, any arguments 
 
 <img width="780" height="796" alt="image" src="https://github.com/user-attachments/assets/301ff2e7-3170-47ac-bde9-400740e27a42" />
 
+
+difference between docker hub and github
+GitHub is a code hosting platform used for storing source code and tracking revisions, whereas Docker Hub is a container registry used for storing, sharing, and managing compiled Docker container images
