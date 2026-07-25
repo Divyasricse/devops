@@ -229,3 +229,21 @@ To check the status of docker wheather it is running or not
 cmd:sudo systemctl status docker
 output:active
 
+#Set environment variable
+CMD: docker run -e APP_COLOR=red --name myapp myapp-image
+ 
+#Docker Compose: when we have multiple docker container to run at once(will there a connnectivity between this files), will go for docker compose
+CMD: docker compose up - latest
+CMD: docker-compose - old legacy - end of life
+ 
+Compose.yml
+Services:
+Web(these are names given to image):ex:docker  run -d --name=web imagename
+Image:  "imagename"
+Database:
+Image: "db image name"
+Messaging:
+Image: "redis:alpine"
+links:-Database
+Orchestration:
+Image: "ansible"
