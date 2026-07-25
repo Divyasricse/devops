@@ -1,3 +1,16 @@
+Physical server--->vm----->containers
+
+vm solve some problems of pysical server(modern things done by devops),conatiner solve some problems of vm
+
+u can create containes on top of vm  as well as pysical server
+
+why docker containers are lightweight?
+Docker containers are lightweight because they share the host operating system's
+kernel instead of hardware-virtualizing a full guest operating system
+
+<img width="617" height="354" alt="image" src="https://github.com/user-attachments/assets/fd1c0ed7-1371-4a6b-b1d6-9a2d76fbc0ce" />
+
+
 **1.Why Docker**
 Docker is used because it solves the "it works on my machine" problem by packaging an application and all its dependencies into a standardized, isolated container
 
