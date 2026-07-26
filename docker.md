@@ -296,3 +296,68 @@ services:
      - "8085:5000"
 
 
+**Docker Engine**
+When we install docker on linux host we actually installing 3 different components:
+ 
+1.Dockerd (daemon ): docker daemon is a background process that managers docker objects
+Images
+Containers
+Volumes
+networks
+ 
+2.Rest API (server): is the API interface that programs can use to talk to the daemon and send instructions.
+ 
+3.Docker (cli): The CLI talks to the daemon through the REST API server: docker run, docker stop, docker rmi
+ 
+Underneath the daemon: Architecture
+Docker cli
+Dockerd daemon
+Containerd runtime
+Runc oci
+Linux kernel . Namespaces . Cgroups
+ 
+Kubernetes directly taking to containerd, it won't talk to dockerd
+ 
+Cgroups . Resource limits
+CMD: docker run --cpus=0.5 ubuntu -> container doesn't take up more than 50% of the host CPU at any given time.
+CMD: docker run --memory=100m ubuntu -> container limited to 100 megabytes
+ 
+Docker follows layered architecture -> line by line it adds
+ 
+Persistent Volumes:
+we have 2 types of mounds (volume(from any volume) and bind(from any host))
+Volume mount: from /var/lib/docker/volumes
+Create Volume: docker volume create datavolume
+CMD: docker run -v datavolume:/var/lib/mysql mysql(if u want to create my sql inside the datavolumes)
+Bind mount: from any host path(if ur mysql is present in other place(/data/mysql) and now u want to send to other path(/var/lib/mysql mysql) use below cmd)
+Cmd: docker run -v /data/mysql:/var/lib/mysql mysql
+-v is old formate
+--mount is latest more readable
+ 
+CMD: docker run --mount type=bind, source=/data/mysql, target=/var/lib/mysql mysql
+ 
+Storage Driver:
+Manage - file system
+Create - writable layer
+Implement - copy-on-write
+ 
+Available:
+Overlay2
+Btrfs
+Zfs
+Fuse-overlayfs
+vfs
+
+
+1.Run a mysql container named mysql-db using the mysql image.
+Set the database password to db_pass123
+cmd:docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=db_pass123  mysql
+-e-refer to env variable
+
+2.Run a mysql container again, but this time map a volume to the container so that the data stored by the container is stored at /opt/data on the host.
+Use the same name : mysql-db and same password: db_pass123 as before.
+Note: Mysql stores data at /var/lib/mysql inside the container.
+cmd:docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=db_pass123 -v /opt/data:/var/lib/mysql mysql
+
+
+
