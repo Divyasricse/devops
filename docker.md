@@ -360,4 +360,18 @@ Note: Mysql stores data at /var/lib/mysql inside the container.
 cmd:docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=db_pass123 -v /opt/data:/var/lib/mysql mysql
 
 
+**Networking**
+-2 types of networking
+1.container 1 talks with conatainer 2
+2.container 1 isolates with conatainer 2
+ 
+1.bridge networking--default networking 
+2.host network
+3.overlay networking(complex)
+
+to delete network 
+cmd:docker network rm network_name
+
+
+
 
