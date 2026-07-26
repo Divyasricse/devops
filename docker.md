@@ -235,6 +235,8 @@ CMD: docker run -e APP_COLOR=red --name myapp myapp-image
 #Docker Compose: when we have multiple docker container to run at once(will there a connnectivity between this files), will go for docker compose
 CMD: docker compose up - latest
 CMD: docker-compose - old legacy - end of life
+
+CMD: docker compose -f compose.yaml up
  
 Compose.yml
 Services:
@@ -250,3 +252,47 @@ Image: "ansible"
 
 if u r linking one to other use
 cmd:docker run -d --name=web --network database web
+
+First, create a Docker network named clicknet. This should be a bridge network
+docker network  create --driver bridge  clicknet
+
+Create a redis database container named redis using the image redis:alpine, running in the background.
+Attach it to the clicknet Docker network that you created in the previous task.
+cmd:docker run -d --name=redis --network clicknet redis:alpine
+
+
+Next, create a simple container named clickcounter using the image kodekloud/click-counter, attach it to the clickcounter network from the earlier task, and then expose it on host port 8085.
+The clickcounter app runs on port 5000.
+cmd:docker run -d --name=clickcounter --network clicknet -p 8085:5000 kodekloud/click-counter
+
+
+Delete the redis and clickcounter containers, alongwith the clicknet network you had created
+root@docker-host ~ ➜  docker stop f3d1b5f07032(stop the container)
+f3d1b5f07032
+
+root@docker-host ~ ➜  docker rm f3d1b5f07032(remove the container)
+f3d1b5f07032
+
+root@docker-host ~ ➜  docker rmi kodekloud/click-counter:latest(remove image)
+Untagged: kodekloud/click-counter:latest
+Deleted: sha256:530e4532a718e8f5cbda05844a6c0638ebe8898fa4c4307ee6afbdd5d1f213db
+
+root@docker-host ~ ➜  docker network rm clicknet(to remove network)
+clicknet
+
+
+Create a compose.yaml file in the /root/clickcounter directory. Once done, bring up the stack using Docker Compose.
+The compose file should have the following exact specification:
+redis service - Use redis:alpine image name
+clickcounter service - Use the kodekloud/click-counter image name; the app runs on port 5000 and should be exposed on host port 8085.
+
+vi compose.yaml
+services:
+ redis:
+   image: redis:alpine
+ clickcounter:
+   image: kodekloud/click-counter
+   ports:
+     - "8085:5000"
+
+
