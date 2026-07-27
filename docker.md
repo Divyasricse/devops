@@ -3,8 +3,10 @@ Physical server--->vm----->containers
 -vm solve some problems of pysical server(modern things done by devops),conatiner solve some problems of vm
 -u can create containes on top of vm  as well as pysical server
 
+```
 <img width="617" height="354" alt="image" src="https://github.com/user-attachments/assets/fd1c0ed7-1371-4a6b-b1d6-9a2d76fbc0ce" />
 
+```
 
 **1.Why Docker**
 Docker is used because it solves the "it works on my machine" problem by packaging an application and all its dependencies into a standardized, isolated container
@@ -34,7 +36,11 @@ The core difference is that a Docker image is a static, read-only template conta
 Docker is an open-source platform that uses containerization technology to package applications and their dependencies into a standardized, lightweight unit called a container
 or
 In simple words,  containerization is a concept or technology and Docker Implements Containerization
+```
+
 <img width="1383" height="721" alt="image" src="https://github.com/user-attachments/assets/5171809b-dd32-4229-a6a2-65fc6f43bc83" />
+
+```
 
 The above picture, clearly indicates that Docker Deamon is brain of Docker. If Docker Deamon is killed, stops working for some reasons, Docker is brain dead :p (sarcasm intended).
 
@@ -46,7 +52,13 @@ There are three important things,
 docker build -> builds docker images from Dockerfile
 docker run -> runs container from docker images
 docker push -> push the container image to public/private regestries to share the docker images.
+```
+
+
 <img width="1589" height="830" alt="image" src="https://github.com/user-attachments/assets/c067271d-5b56-40d8-963a-0ab76506256c" />
+
+```
+
 - docker file (we will give some commands) from these it will bulid image ,by using image it will run conatainer.these all commands is handles by docker engine
 
 **Commands**
