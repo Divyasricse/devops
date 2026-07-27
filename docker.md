@@ -393,6 +393,7 @@ cmd:docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=db_pass123 -v /opt/data
 
 
 **Networking**
+
 -2 types of networking
 1.container 1 talks with conatainer 2
 2.container 1 isolates with conatainer 2
@@ -401,8 +402,6 @@ cmd:docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=db_pass123 -v /opt/data
 2.host network
 3.overlay networking(complex)
 
-to delete network 
-cmd:docker network rm network_name
 
 Run a container named alpine-2 using the alpine image and attach it to the none network.
 cmd:docker run -d --name alpine-2 --network=none alpine
@@ -424,6 +423,9 @@ CMD: docker network create \
 --driver bridge \
 --subnet 182.18.0.0/16 \
 custom-isolated-network
+
+to delete network 
+cmd:docker network rm network_name
  
 DNS: this is also why service name DNS works in docker compose always creates a user-defined
 CMD: docker network create --driver bridge my-app
