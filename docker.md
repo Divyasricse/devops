@@ -1,15 +1,7 @@
+``` text
 Physical server--->vm----->containers
-
-vm solve some problems of pysical server(modern things done by devops),conatiner solve some problems of vm
-
-u can create containes on top of vm  as well as pysical server
-
-why docker containers are lightweight?
-Docker containers are lightweight because they didn't have a full operating system and they use the resources from base  operating system
-or 
-they share the host operating system's kernel instead of hardware-virtualizing a full guest operating system
-<img width="1589" height="830" alt="image" src="https://github.com/user-attachments/assets/c067271d-5b56-40d8-963a-0ab76506256c" />
- docker file (we will give some commands) from these it will bulid image ,by using image it will run conatainer.these all commands is handles by docker engine
+-vm solve some problems of pysical server(modern things done by devops),conatiner solve some problems of vm
+-u can create containes on top of vm  as well as pysical server
 
 <img width="617" height="354" alt="image" src="https://github.com/user-attachments/assets/fd1c0ed7-1371-4a6b-b1d6-9a2d76fbc0ce" />
 
@@ -22,15 +14,43 @@ Docker is used because it solves the "it works on my machine" problem by packagi
 A Docker container is a lightweight, standalone, and executable package of software that includes everything needed to run an application, including the code, runtime, system tools, libraries, and settings. 
 
 **3.Container vs virtual machine**
+Containers and virtual machines are both technologies used to isolate applications and their dependencies, but they have some key differences:
 
-Docker containers virtualize the operating system to share the host kernel, while Virtual Machines (VMs) virtualize physical hardware to run a completely separate guest operating system
+Docker containers virtualize the operating system to share the host kernel, while Virtual Machines (VMs) virtualize physical hardware to run a completely separate guest operating system.when comes to security vm are secure because it is using independent os.
+
+**4.why docker containers are lightweight?**
+Docker containers are lightweight because they didn't have a full operating system and they use the resources from base  operating system.Additionally, Docker containers are designed to be minimal, only including what is necessary for the application to run, further reducing their size.
+or
+Containers are lightweight in nature. As they don't have complete operating systemContainer have minimal operating system that is base image. Container is a package/bundle of application that has all the application library and system dependencies like python. 
+Very easy to ship and transport as they are lightweight in nature. As they use resources from base operating system.
+or 
+they share the host operating system's kernel instead of hardware-virtualizing a full guest operating system
 
 **4.difference between images and containers in docker**
 The core difference is that a Docker image is a static, read-only template containing your application code and environment configurations, while a Docker container is a live, executable runtime instance created from that image
 <img width="704" height="410" alt="image" src="https://github.com/user-attachments/assets/3f90f92a-edc5-4312-8123-56b15932881c" />
 
+**5.what is docker**
+Docker is an open-source platform that uses containerization technology to package applications and their dependencies into a standardized, lightweight unit called a container
+or
+In simple words,  containerization is a concept or technology and Docker Implements Containerization
+<img width="1383" height="721" alt="image" src="https://github.com/user-attachments/assets/5171809b-dd32-4229-a6a2-65fc6f43bc83" />
+
+The above picture, clearly indicates that Docker Deamon is brain of Docker. If Docker Deamon is killed, stops working for some reasons, Docker is brain dead :p (sarcasm intended).
+
+**Docker LifeCycle**
+We can use the above Image as reference to understand the lifecycle of Docker.
+
+There are three important things,
+
+docker build -> builds docker images from Dockerfile
+docker run -> runs container from docker images
+docker push -> push the container image to public/private regestries to share the docker images.
+<img width="1589" height="830" alt="image" src="https://github.com/user-attachments/assets/c067271d-5b56-40d8-963a-0ab76506256c" />
+- docker file (we will give some commands) from these it will bulid image ,by using image it will run conatainer.these all commands is handles by docker engine
+
 **Commands**
-1.ran
+1.Docker run :Runs a Docker container.
 #Create and Run a container(attach mode)
 Cmd: docker run --name docker-container-name docker-image-name:v1
 
@@ -43,26 +63,25 @@ Essential Flags
 --rm: Automatically removes the container when it exits.
 -e: Defines environment variables inside the container
 
-2.#Show running containers
+2.Lists running containers on the host machine.
 Cmd: docker ps
  
-3.#Show all containers (running + stopped)
+3.Show all containers (running + stopped)
 Cmd: docker ps -a
 
-#Stop docker container
+4.Stop running docker container
 Cmd: docker stop container-name
-Note:must now container name or container id
+Note:must use container name or container id
  
-#Remove docker container
+5.Remove docker container
 Cmd: docker rm container-name
 output:it will show container name then it is successfully removed
 
-#List docker images:
+6.List docker images:
 Cmd: docker images
 Note :we will get name id tag size created date here
 
-
-#Remove docker image
+7.Remove docker image
 CMD: docker rmi image-name(we can't delete it with image id)
 Note: make sure no containers are running on that image before you remove image
 
@@ -76,24 +95,24 @@ docker pull ubuntu:22.04
 
 **docker pull only downloads an image, while docker run downloads, creates, and starts a container from that image.**
 
-#Keep container sleep for 5 seconds
+8.Keep container sleep for 5 seconds
 CMD: docker run image-name sleep 5
 
-#How to run a command on already running container(change a config, check a log, run a quick query)
+9.How to run a command on already running container(change a config, check a log, run a quick query)
 CMD: docker exec container-id cat /etc/hosts
 
  
-#Run a container on Detach mode(it will run on background, directly gives the id .and stops automatocally.so you can able to perform other actions)
+10.Run a container on Detach mode(it will run on background, directly gives the id .and stops automatocally.so you can able to perform other actions)
 CMD: docker run -d container-name or ID
 
 note:if you want to give name to container then run:
 CMD: docker run -d --name divya container-name or ID
 
  
-##Run a container on Detach mode(here it won't stop we need to press contrl+c to get out of it or quit)
+11.Run a container on attach mode(here it won't stop we need to press contrl+c to get out of it or quit)
 CMD: docker run container-id
 
-#if you want to attach back to running container
+12.if you want to attach back to running container
 CMD: docker attach container-id
 note Lcontainer id is big number like:asdfghjkrtyu so just give asdfg so it will understand because it is unique
 
@@ -101,9 +120,10 @@ The docker inspect command returns low-level, detailed configuration data for vi
 docker inspect <container_name_or_id>
 
 **Image tags**
-one image can be used by different cointainers
+what is image:Lists docker images on the host machine.
+-one image can be used by different cointainers
 
-1.docker rum redis
+1.docker run redis
 output :it will give latest version
 if you want to go with specific version
 cmd docker run redis:7.4
@@ -419,4 +439,7 @@ ans:pulling the base image and then pushing it to your private registry.
 <img width="713" height="599" alt="image" src="https://github.com/user-attachments/assets/9bbc5706-6f9b-42d1-9496-d14e12c291e6" />
 <img width="698" height="614" alt="image" src="https://github.com/user-attachments/assets/ee90bb4b-a0fb-4b07-b079-92d92af1bc16" />
 
+Dockerfile
+Dockerfile is a file where you provide the steps to build your Docker Image.
 
+```
