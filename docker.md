@@ -386,6 +386,37 @@ DB_Host with the value mysql-db.DB_Password with the value db_pass123.Make sure 
 cmd:docker run -d --name webapp --network wp-mysql-network 
 -e DB_Host=mysql-db -e DB_Password=db_pass123 -p 38080:8080 kodekloud/latest-webapp-mysql 
 
+**Networking**
+CMD: docker network ls
+CMD: docker network create \
+--driver bridge \
+--subnet 182.18.0.0/16 \
+custom-isolated-network
+ 
+DNS: this is also why service name DNS works in docker compose always creates a user-defined
+CMD: docker network create --driver bridge my-app
+CMD: docker run -d --name=mysql --network=my-app mysql
+CMD: docker run -d --name=web --network=my-app my-webapp
+ 
+Network Namespaces: separate namespaces for each container
+Virtual Ethernet Pairs: Connect containers together
 
+
+A Docker registry :is a centralized storage and distribution system designed to manage, share, and version container 
+images
+
+diff bet docker hub( cloud SaaS platform provided directly by Docker.) and registory(open source)
+The core difference is that a Docker Registry is a software application used to store and distribute container images, while Docker Hub is a specific, cloud-based public implementation of a registry managed by Docker Inc
+
+Let's practice deploying a registry server on our own.
+Run a registry server with name equals to my-registry using registry:2 image with host port set to 5000, and restart policy set to always.
+cmd:docker run -d --name my-registry -p 5000:5000 --restart always registry:2
+
+
+Now, it's time to push some images to our registry server. Let's push two images for now: nginx:latest and httpd:latest.
+Note: Don't forget to pull them first.
+ans:pulling the base image and then pushing it to your private registry.
+<img width="713" height="599" alt="image" src="https://github.com/user-attachments/assets/9bbc5706-6f9b-42d1-9496-d14e12c291e6" />
+<img width="698" height="614" alt="image" src="https://github.com/user-attachments/assets/ee90bb4b-a0fb-4b07-b079-92d92af1bc16" />
 
 
