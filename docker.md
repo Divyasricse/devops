@@ -33,7 +33,7 @@ The core difference is that a Docker image is a static, read-only template conta
 <img width="704" height="410" alt="image" src="https://github.com/user-attachments/assets/3f90f92a-edc5-4312-8123-56b15932881c" />
 
 **5.what is docker**
-Docker is an open-source platform that uses containerization technology to package applications and their dependencies into a standardized, lightweight unit called a container
+Docker is an open-source platform that helps us to build ,ship and run applications inside containers.uses containerization technology to package applications and their dependencies into a standardized, lightweight unit called a container
 or
 In simple words,  containerization is a concept or technology and Docker Implements Containerization
 ```
