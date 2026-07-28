@@ -8,8 +8,7 @@ Physical server--->vm----->containers
 
 ```
 
-**1.Why Docker**
-Docker is used because it solves the "it works on my machine" problem by packaging an application and all its dependencies into a standardized, isolated container
+
 
 **2.Container**
 
@@ -32,10 +31,7 @@ they share the host operating system's kernel instead of hardware-virtualizing a
 The core difference is that a Docker image is a static, read-only template containing your application code and environment configurations, while a Docker container is a live, executable runtime instance created from that image
 <img width="704" height="410" alt="image" src="https://github.com/user-attachments/assets/3f90f92a-edc5-4312-8123-56b15932881c" />
 
-**5.what is docker**
-Docker is an open-source platform that helps us to build ,ship and run applications inside containers.uses containerization technology to package applications and their dependencies into a standardized, lightweight unit called a container
-or
-In simple words,  containerization is a concept or technology and Docker Implements Containerization
+
 ```
 
 <img width="1383" height="721" alt="image" src="https://github.com/user-attachments/assets/5171809b-dd32-4229-a6a2-65fc6f43bc83" />
