@@ -1,0 +1,33 @@
+
+## Branching Strategy
+### 1. Main Branch
+The **Main Branch** always contains the production-ready code. Whatever code is currently running in the production environment should be available in the main branch.
+### 2. Feature Branch
+A **Feature Branch** is created whenever a new feature needs to be implemented or a bug needs to be fixed. All new development changes are done in the feature branch.
+### 3. Snapshot Branch
+A **Snapshot Branch** is created with a naming convention that includes the month, date, and version number. It is used for testing in the development environment. The code is copied from the feature branch into the snapshot branch for validation.
+### 4. Release Branch
+A **Release Branch** is similar to a snapshot branch but follows a naming convention that ends with `_rc` (Release Candidate), for example: `Jul29_2026_v1.0_rc`.
+This branch is used for:
+
+* Deployment to the testing environment.
+* Performance testing.
+* End-to-end validation and other testing activities.
+
+Once all tests pass successfully, the release is deployed to production. The release then goes through a validation period (typically around 3 days). If no issues are identified during this period, the changes are merged into the **Main Branch**.
+### 5. Hotfix Branch
+If any issues are discovered during the validation period and can be resolved quickly, a **Hotfix Branch** is created to implement and deploy the fix.
+If the issue cannot be resolved within the validation period:
+
+* Revert the changes in production.
+* Create a new feature branch.
+* Implement the required fixes.
+* Restart the release process.
+
+***
+
+## Important: Release Process
+
+1. **Backup** – Take a backup of the existing production code before deployment.
+2. **Deployment** – Deploy the new release to production.
+3. **Fallback/Rollback Plan** – Have a rollback strategy ready to restore the previous version if any critical issues occur after deployment.
