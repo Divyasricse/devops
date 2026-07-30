@@ -1,3 +1,37 @@
+**1.what is git**
+Git is distributed version control system (DVCS) that helps to track code changes ,collaborate with teams,roll back to older versions and manage branching/merging
+
+<img width="379" height="361" alt="image" src="https://github.com/user-attachments/assets/4816fdae-b708-4d23-b792-0a242d90658d" />
+
+**2.what is repository**
+A repository is a project directory managed by git,containing code,commit history and branches
+#local repository ->hosted on ur machine(git init)
+#Remote repository ->Hosted on github for team collaboration
+
+**3.what is commit in git**
+A commit is a cryptographic snapshot of your project files at a specific point in time,acting as a permanent save point in ur repository 's history
+
+**4.what is a merge conflict?how do you solve it?**
+
+
+git commit -am 'msg' as a shotcut for tracked files
+
+**5/Diff btn git fetch and git pull**
+git fetches only downloads remote changes without modifying your local working files,
+git pull downloads those changes and immediately merges them into ur active local branch->fetch+merge into local
+
+**6.what is gitstash
+
+**7what is .gitignore**
+a file that lists files/folders git should ignore(eg:logs,build files)
+
+**8.what is difference btw fork and clone?**
+fork ->copies repository to ur github account
+clone->copies repository to ur local machine
+
+**9.What is pr(pull request)?**
+a pr is a request to merge code into another branch on github.it allows code review,discussion and approval before merging.
+
 
 ## Branching Strategy
 ### 1. Main Branch
