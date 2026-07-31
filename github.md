@@ -32,6 +32,15 @@ clone->copies repository to ur local machine
 **9.What is pr(pull request)?**
 a pr is a request to merge code into another branch on github.it allows code review,discussion and approval before merging.
 
+**10.what is git branching strategy used in ur current project**
+ans:in our current project we have multiple different branches among this branches we have dev branch which containes the deveopment code which deployed to th deveopment
+env generally for testing perpose apart from that we have feature branch whenever the development team wwants to deveop a new fetaure they will create a
+feature branch from dev branch and whatever changes are made at feature branch will be merged to dev branch with the help of pull request .
+we have a stage branch that is used before the production deployment which containes the pre-production code here final testing and prevalidations will be done
+these stage branch code will branch to main branch code.what ever will have code in main branch will be deployed to clusters or servers
+apart from thses we have one hotfix branch after release in prod/servers if users face any bug them we can create one hotfix branch and work on it anfrt fixing
+push the code in to main branch and deploy the code to prod/server
+
 
 ## Branching Strategy
 ### 1. Main Branch
